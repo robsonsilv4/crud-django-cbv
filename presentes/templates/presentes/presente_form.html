@@ -1,3 +1,4 @@
+{% load bootstrap4 %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -5,12 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>PresenteForm</title>
+    {% bootstrap_css %}
+    {% bootstrap_messages %}
 </head>
 <body>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Salvar</button>
-    </form>
+	<div class="container">
+	    <form method="POST" class="form">
+	        {% csrf_token %}
+	        {% bootstrap_form form %}
+	        {% buttons %}
+	        	<button type="submit" class="btn btn-primary">Salvar</button>
+	        {% endbuttons %}
+	    </form>
+    </div>
+
+    {% bootstrap_javascript jquery='full' %}
 </body>
 </html>
